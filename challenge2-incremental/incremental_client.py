@@ -3,6 +3,7 @@ import time
 import sys
 import random
 import pickle
+import base64
 from incremental_model import AutoEncoderTrainer, AE, reset_seeds
 
 server_location = "http://localhost:4001"
@@ -26,11 +27,11 @@ def main():
         reset_seeds()
         model = AE()
         serialized_data, epochs = get_server_data()
-        state_dict = pickle.loads(serialized_data)
+        state_dict = pickle.loads(base64.b64decode(serialized_data))
         model.load_state_dict(state_dict)
-        loss = AutoEncoderTrainer.train(model, 1, 0)
-        post_server_data(pickle.dumps(model.state_dict()), segment, loss, epochs)
-        print("Client: 1 Epochs:", epochs, "Loss:", loss, "Segment: 0")
+        loss = AutoEncoderTrainer.train(model, 1, segment)
+        post_server_data(base64.b64encode(pickle.dumps(model.state_dict())).decode("utf-8"), segment, loss, epochs)
+        print("Client:",client_id, "Epochs:", epochs, "Loss:", loss, "Segment: "+sys.argv[1])
         time.sleep(1)
 
 if __name__=='__main__':

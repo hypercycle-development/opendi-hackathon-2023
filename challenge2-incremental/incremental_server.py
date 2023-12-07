@@ -25,16 +25,13 @@ class IncrementalExample(SimpleServer):
                  "input_query": "",
                  "input_headers": "",
                  "output": {},
-                 "documentation": "",
+                 "documentation": "Returns the parameters of this model, along with the number of epochs computed so far.",
                  "example_calls": [{
                      "body": "",
                      "method": "GET",
                      "query": "",
                      "headers": "",
-                     "output": {"epochs":165,"total_height":76365.65916019333,
-                                "total_weight":69078.21611527249,"samples":493,
-                                "average_weight":140.1180854265162,
-                                "average_height":154.89991716063557}
+                     "output": {"epochs":3,"params": "gASVgQAAAAAAAACMC2Nv..."}
                  }]
              })
     def get_data(self, request):
@@ -51,7 +48,8 @@ class IncrementalExample(SimpleServer):
                  "output": {},
                  "documentation": "",
                  "example_calls": [{
-                     "body": "",
+                     "body": {"params": "gASVgQAAAAAAAACMC2Nv...", "segement": 1,
+                              "loss": 0.6894218985755133, "epochs": 3},
                      "method": "POST",
                      "query": "",
                      "headers": "",

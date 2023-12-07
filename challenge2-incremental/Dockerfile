@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM python:3.8.17-slim-bullseye
 LABEL GPUS=0 GPU_MEMORY=0
-LABEL description="Federated Learning AIM Example."
+LABEL description="Incremental Learning AIM Example."
 COPY . /app
 ENV DEBIAN_FRONTEND=1
 
@@ -22,6 +22,6 @@ RUN pip3 install -r /app/requirements.txt
 
 COPY . .
 
-EXPOSE 4000/tcp
+EXPOSE 4001/tcp
 
-CMD python3 federated_server.py
+CMD python3 incremental_server.py

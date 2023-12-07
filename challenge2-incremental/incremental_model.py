@@ -105,7 +105,7 @@ class AutoEncoderTrainer:
         return serialized, cls.epochs
 
     @classmethod
-    def post_data(cls, parameters_dict, segment, loss):
+    def post_data(cls, parameters_dict, segment, loss, epoch=None):
         if cls.segments_results[segment]['updated'] == True:
             return False
 
@@ -116,7 +116,7 @@ class AutoEncoderTrainer:
         #We have a confirmed reproduced loss for this segment, so update the model.
         cls.segments_results[segment]['updated'] = True
 
-        state_dict = pickle.loads(base64.b64decode(parameters_dict.decode("utf-8")))
+        state_dict = pickle.loads(base64.b64decode(parameters_dict.encode("utf-8")))
         model_dict = cls.new_model.state_dict()
         for key in model_dict:
             if cls.updates == 0:
@@ -180,7 +180,8 @@ def main():
         state_dict = pickle.loads(base64.b64decode(serialized_data.encode('utf-8')))
         model1.load_state_dict(state_dict)
         loss = AutoEncoderTrainer.train(model1, 1, 0)
-        AutoEncoderTrainer.post_data(pickle.dumps(model1.state_dict()), 0, loss)
+        AutoEncoderTrainer.post_data(base64.b64encode(pickle.dumps(model1.state_dict())).decode('utf-8'), 0, loss)
+
         print("Client: 1 Epochs:", epochs, "Loss:", loss, "Segment: 0")
 
         reset_seeds()
@@ -190,7 +191,7 @@ def main():
 
         model2.load_state_dict(state_dict)
         loss = AutoEncoderTrainer.train(model2, 1, 1)
-        AutoEncoderTrainer.post_data(pickle.dumps(model2.state_dict()), 1, loss)
+        AutoEncoderTrainer.post_data(base64.b64encode(pickle.dumps(model2.state_dict())).decode('utf-8'), 1, loss)
         print("Client: 2 Epochs:", epochs, "Loss:", loss, "Segment: 1")
 
         reset_seeds()
@@ -199,7 +200,7 @@ def main():
         state_dict = pickle.loads(base64.b64decode(serialized_data.encode('utf-8')))
         model3.load_state_dict(state_dict)
         loss = AutoEncoderTrainer.train(model3, 1, 0)
-        AutoEncoderTrainer.post_data(pickle.dumps(model3.state_dict()), 0, loss)
+        AutoEncoderTrainer.post_data(base64.b64encode(pickle.dumps(model3.state_dict())).decode('utf-8'), 0, loss)
         print("Client: 3 Epochs:", epochs, "Loss:", loss, "Segment: 0")
 
         reset_seeds()
@@ -208,7 +209,7 @@ def main():
         state_dict = pickle.loads(base64.b64decode(serialized_data.encode('utf-8')))
         model4.load_state_dict(state_dict)
         loss = AutoEncoderTrainer.train(model4, 1, 1)
-        AutoEncoderTrainer.post_data(pickle.dumps(model4.state_dict()), 1, loss)
+        AutoEncoderTrainer.post_data(base64.b64encode(pickle.dumps(model4.state_dict())).decode('utf-8'), 1, loss)
         print("Client: 4 Epochs:", epochs, "Loss:", loss, "Segment: 1")
 
     import pdb
