@@ -1,6 +1,6 @@
 """
 OpenDI HyperCycle Hackathon 2023
-Challenge 3: Genetic Algorithm
+Challenge 3: Genetic Algorithm for Automated Prompt Engineering
 """
 import os
 

@@ -15,3 +15,10 @@ def test_prompt_endpoint():
     assert isinstance(response_json['prompt'], str), "'prompt' is not a string"
     assert isinstance(response_json['score'], (int, float)), "'score' is not a number"
     assert len(response_json['prompt']) > 0, "'prompt' is empty"
+
+def main():
+    #run test:
+    test_prompt_endpoint()
+    
+if __name__=='__main__':
+    main()
