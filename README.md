@@ -65,6 +65,12 @@ GET /manifest.json
             ]
         },
         {
+            "input_body": {
+                "params": "<Base64 encoded of pickled state_dict>",
+                "segment": "<Int>",
+                "loss": "<Float>",
+                "epochs": "<Int>"
+            }, 
             "input_query": "",
             "input_headers": "",
             "output": {},
