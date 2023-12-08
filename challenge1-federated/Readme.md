@@ -10,20 +10,20 @@ In a more thorough example, the data received from the server would be the model
 
 
 
-To run this example, you can install the requirements.txt
+To run this example, you can install the `requirements.txt`
 
-  pip install -r requirements.txt
+  `pip install -r requirements.txt`
 
 Run the server code:
 
-  python federated_server.py
+  `python federated_server.py`
 
 
 Then run some clients:
 
-  python federated_client.py 150 65
+  `python federated_client.py 150 65`
 
-  python federated_client.py 160 75
+  `python federated_client.py 160 75`
 
 
 Over time, the server will display the average weight and height of 155 and 70.
