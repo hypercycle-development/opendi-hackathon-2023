@@ -78,7 +78,7 @@ GET /manifest.json
             "input_query": "",
             "input_headers": "",
             "output": {},
-            "documentation": "",
+            "documentation": "Accepts the result of a computation on a given epoch and segment number. Params are base64 encoded from the pickled model.state_dict object.",
             "example_calls": [
                 {
                     "body": {
