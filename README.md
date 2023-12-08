@@ -33,7 +33,7 @@ While nodes in the hypercycle system may be high-powered, nodes for these challe
 The server code itself should adhear to the HyperCycle AIM (AI Machine) specs. For easiest integerations, the examples given use a python library to create the server code to receive requests, that will add in extra metadata to make the server follow the required specs.
 
 For similiplicy, you can also use the same library used (pyhypercycle_aim) or implement the required spec yourself (for example, in the case of writing a server in a different language). The most important thing to add is a `/manigest.json` endpoint, which will describe how to interact with your server. An example is given below:
-
+```
 GET /manifest.json
 {
     "name": "IncrementalExample",
@@ -92,7 +92,7 @@ GET /manifest.json
         }
     ]
 }
-
+```
 
 A Dockerfile for launching your server can also be added. Examples are given in the challenge folders, and in practice are used to create containers for the AI machines that can be deployed easily across different nodes.
 
