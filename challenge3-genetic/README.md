@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 Run the server code:
 
-python federated_server.py
+python genetic_server.py
 
 Then run the test code
 
