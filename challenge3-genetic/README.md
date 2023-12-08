@@ -8,14 +8,14 @@ In a more elaborate example, you will first need to determine the kind of output
 
 To run this example, you can install the requirements.txt
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 Run the server code:
 
-python genetic_server.py
+`python genetic_server.py`
 
 Then run the test code
 
-python test_genetic_server.py 
+`python test_genetic_server.py`
 
-Edit line 7 of test_genetic_server.py to change the target output, which is assumed here to be a string containing several adjectives.
+Edit line 7 of `test_genetic_server.py` to change the target output, which is assumed here to be a string containing several adjectives.
